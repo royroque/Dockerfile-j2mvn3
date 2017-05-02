@@ -7,7 +7,7 @@ RUN \
   apt-get install -y vim iputils-ping wget apt-transport-https software-properties-common python-software-properties
   
 ## Install git
-RUN apt-get install -y git
+RUN apt-get update && apt-get install -y git
 
 ## Install java 8
 RUN \
