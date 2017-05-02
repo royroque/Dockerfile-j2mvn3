@@ -1,2 +1,4 @@
-# Dockerfile-jenkins2maven3
-Dockerfile-jenkins2maven3
+# Dockerfile-j2mvn3git
+  Jenkins 2
+  Maven 3
+  Git
