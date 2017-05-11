@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ## install apps
 RUN \
   apt-get update && \
-  apt-get install -y vim iputils-ping wget apt-transport-https software-properties-common python-software-properties git
+  apt-get install -y sudo vim iputils-ping wget apt-transport-https software-properties-common python-software-properties git supervisor
 
 ## install java 8
 RUN \
@@ -38,7 +38,12 @@ ENV JENKINS_HOME /devtools/jenkins_home
 RUN ls -al /usr/share/jenkins
 #RUN cat /devtools/jenkins_home/secrets/initialAdminPassword
 
-RUN apt-get clean
+## Cleanup
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+#CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+
+## Use supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord"]
 
