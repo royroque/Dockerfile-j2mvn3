@@ -34,9 +34,9 @@ RUN \
   sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list' && \
   apt-get update && \
   apt-get install -y jenkins
-ENV JENKINS_HOME /devtools/jenkins_home
+ENV JENKINS_HOME /jenkins_home
 RUN ls -al /usr/share/jenkins
-#RUN cat /devtools/jenkins_home/secrets/initialAdminPassword
+#RUN cat /jenkins_home/secrets/initialAdminPassword
 
 ## Cleanup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
